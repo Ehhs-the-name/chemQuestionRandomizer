@@ -5,9 +5,9 @@ public class chemRandom {
         public static void main(String[] args){
             Scanner input = new Scanner(System.in);
 
-            HashMap<String, Integer> dict4VNum = chap4IntQuestions();
+            HashMap<String, Double> dict4VNum = chap4IntQuestions();
             HashMap<String, String> dict4Word = chap4WordQuestions();
-            HashMap<String, Integer> d6Int = ch6IntQuestions();
+            HashMap<String, Double> d6Int = ch6IntQuestions();
             HashMap<String, String> d6Word = ch6WordQuestions();  
 
             System.out.print("What chapter of the textbook would you like to answer questions from?  (so far there's only ch 4 and ch 6) :: ");
@@ -17,7 +17,7 @@ public class chemRandom {
             System.out.print("Do you prefer to give long answers (1) or just short number answers? (2) :: ");
             int userAnsEffort = input.nextInt();
 
-            // Chooses which Hashmap to choose from, the String String or String Integer ones.
+            // Chooses which Hashmap to choose from, the String String or String Double ones.
             switch (userAnsEffort) {
 
                 // If user says they like long answers
@@ -63,14 +63,15 @@ public class chemRandom {
 
     }
 
-    public static void qAsker(int userQCount, HashMap<String, Integer> dict4Num){
+    // New problem arising that was very obvious: The Random() is not random enough- it keeps taking the same questions >:(
+    public static void qAsker(int userQCount, HashMap<String, Double> dict4Num){
         Scanner input = new Scanner(System.in);
 
         while(userQCount > 0){
             Object[] ch4Num = dict4Num.keySet().toArray();
             Object key = ch4Num[new Random().nextInt(ch4Num.length)];
-            System.out.println("************ Random Chem Question ************ \n" + key);
-            int userAnswer = input.nextInt();
+            System.out.println("\n\n************ Random Chem Question ************ \n" + key);
+            double userAnswer = input.nextDouble();
             if(userAnswer == dict4Num.get(key)){
                 System.out.println("Correct!");
             } else {
@@ -98,24 +99,24 @@ public class chemRandom {
     }
 
 
-    public static HashMap<String, Integer> chap4IntQuestions() {
-        HashMap<String, Integer> dict4VNum = new HashMap<String, Integer>() {{
-            put("Determine the number of valence electrons in neutral atoms of the following element: Li", 1);
-            put("Determine the number of valence electrons in neutral atoms of the following element: C", 4);
-            put("Determine the number of valence electrons in neutral atoms of the following element: Mg", 2);
-            put("Determine the number of valence electrons in neutral atoms of the following element: Ar", 8);
+    public static HashMap<String, Double> chap4IntQuestions() {
+        HashMap<String, Double> dict4VNum = new HashMap<String, Double>() {{
+            put("Determine the number of valence electrons in neutral atoms of the following element: Li", 1.0);
+            put("Determine the number of valence electrons in neutral atoms of the following element: C", 4.0);
+            put("Determine the number of valence electrons in neutral atoms of the following element: Mg", 2.0);
+            put("Determine the number of valence electrons in neutral atoms of the following element: Ar", 8.0);
 
-            put("Determine the number of valence electrons in neutral atoms of the following element: Fe", 8);
-            put("Determine the number of valence electrons in neutral atoms of the following element: Zr", 4);
-            put("Determine the number of valence electrons in neutral atoms of the following element: Bi", 5);
-            put("Determine the number of valence electrons in neutral atoms of the following element: I", 7);
+            put("Determine the number of valence electrons in neutral atoms of the following element: Fe", 8.0);
+            put("Determine the number of valence electrons in neutral atoms of the following element: Zr", 4.0);
+            put("Determine the number of valence electrons in neutral atoms of the following element: Bi", 5.0);
+            put("Determine the number of valence electrons in neutral atoms of the following element: I", 7.0);
             
-            put("Determine the number of valence electrons in the following negative ions. C^(4-)", 8);
-            put("Determine the number of valence electrons in the following negative ions. N^(3-)", 8);
-            put("Determine the number of valence electrons in the following negative ions. S^(2-)", 8);
-            put("Determine the number of valence electrons in the following negative ions. I^(-)", 8);
-            put("How many valence electrons surround an F atom in F2?",7);
-            put("How many valence electrons surround around an O atom in O2?",4);
+            put("Determine the number of valence electrons in the following negative ions. C^(4-)", 8.0);
+            put("Determine the number of valence electrons in the following negative ions. N^(3-)", 8.0);
+            put("Determine the number of valence electrons in the following negative ions. S^(2-)", 8.0);
+            put("Determine the number of valence electrons in the following negative ions. I^(-)", 8.0);
+            put("How many valence electrons surround an F atom in F2?",7.0);
+            put("How many valence electrons surround around an O atom in O2?",4.0);
         }}; 
         
         return dict4VNum; 
@@ -133,12 +134,14 @@ public class chemRandom {
         return dict4Words; 
     }
 
-    public static HashMap<String, Integer> ch6IntQuestions() {
-        HashMap<String, Integer> dict6Int = new HashMap<String, Integer>() {{
-            put("Test question 1", 1);
-            put("Test question 2", 2);
-            put("Test question 3", 3);
-            put("Test question 4", 4);
+    public static HashMap<String, Double> ch6IntQuestions() {
+        HashMap<String, Double> dict6Int = new HashMap<String, Double>() {{
+            put("Calculate the pressure exerted by the shoes of a 200-lb man wearing size 10 shoes if each shoe makes contact with an area of the floor that is 20 in^2.\nAnswer will be in lbs/in^2, do not enter units.", 5.0);
+            put("What is the pressure in units of atmospheres when a barometer reads 745.8 mmHg?\n(To 3 sig figs)", 0.981);
+            put("What is the pressure in  pascals when a barometer reads 745.8 mmHg?\n(To 3 sig figs)", 99430.222);
+            put("How many inches of mercury would exert a pressure of 1.00 atm?\n (to 3 sig figs)", 29.921);
+            put("What is 1.00 atm in pascals?", 101325.0);
+            put("Calculate the force exerted on the earth by the atmosphere if atmospheric pressure is 14.7 lb/in^2 and the surface area of the planet is 5.1 x 10^8 km^2.\n(enter sci-notation as a 000 after rounding to thousands place. Ex: 1.234 x 10^8 => 1.2340008)", 1.16200019);
         }}; 
         
         return dict6Int; 
@@ -147,10 +150,12 @@ public class chemRandom {
     public static HashMap<String, String> ch6WordQuestions() {
                 
         HashMap<String, String> dict6Words = new HashMap<String, String>() {{
-            put("Works ands Testing?","Works ands Testing!");
-            put("Works ands Testing?","Works ands Testing!!");
-            put("Works ands Testing?","Works ands Testing!!!");
-            put("Works ands Testing?","Works ands Testing!!!!");
+            put("Define 'temperature'.", "Temperature is the measure of average kinetic energy. Essentially, temperature answers the question: 'how much are those atoms movin' in that thang?'");
+            put("If the average kinetic energies of the atoms composing two different substances are the same, what can be said about the temperatures of the two substances?", "That the temperatures of those substances are equal, because temperature is the measure of average kinetic energy.");
+            put("What makes a molecule or element more likely to be in gas phase at room temp?", "If it is a nonmetals and/or a compound comprised of only non-metals, with a low Atomic or Molecular Weight, it's more likely to be a gas at room temp.");
+            put("How does the volume of a mole of liquid water compare to that of a mole of gaseous water both at 25C and 1 atm?", "A mol of gaseous water would take up more volume than liquid water. The increase factor is about 800.");
+            put("In what way is pressure related to force?", "Pressure is the force of the gas divided by the area it contains: \nP = F/A\nWhich is why it's measured in pounds per square inch (psi), the force exserted  against the atmosphere (atm), the force exserted against 1 millimetre of mercury in a manometer (mmHg) or newtons per square metre (N/m^2 or Pa).");
+            // put("Works ands Testing?","Works ands Testing!!!!");
         }};
         
         return dict6Words; 
