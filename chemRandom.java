@@ -19,6 +19,8 @@ public class chemRandom {
 
             // Chooses which Hashmap to choose from, the String String or String Integer ones.
             switch (userAnsEffort) {
+
+                // If user says they like long answers
                 case 1:
 
                     // Chooses which chapter from the textbook to pull questions from.
@@ -34,6 +36,7 @@ public class chemRandom {
 
                     break;
 
+                // If user says they like short number answers, all user inputs from here should be ints
                 case 2:
 
                     //
@@ -46,7 +49,11 @@ public class chemRandom {
                         default:
                             break;
                     }
+                    
+                    break;
 
+                // If the user puts something besides a 1 or 2. (hopefully, tried fixing it but... haha)
+                // Would love to fix it but I haven't done any actual chem problems and my exam is in a couple days... So yeah no.
                 default:
                     System.out.println("To continue, please put in 1 or 2. :: ");
                     userAnsEffort = input.nextInt();
@@ -107,7 +114,7 @@ public class chemRandom {
             put("Determine the number of valence electrons in the following negative ions. N^(3-)", 8);
             put("Determine the number of valence electrons in the following negative ions. S^(2-)", 8);
             put("Determine the number of valence electrons in the following negative ions. I^(-)", 8);
-            put("How many valence electrons surround an F atom in F2? How many are around an O atom in O2?",6);
+            put("How many valence electrons surround an F atom in F2?",7);
             put("How many valence electrons surround around an O atom in O2?",4);
         }}; 
         
